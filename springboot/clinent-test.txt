@@ -1,0 +1,28 @@
+1. 생성 테스트
+
+Request URL: http://localhost:8080/api/users
+HTTP Method: POST
+Request Body:
+{
+    "firstName": "ramesh",
+    "lastName":"fadatare",
+    "email": "ramesh@gmail.com"
+}
+
+2. 조회 테스트
+Request URL: http://localhost:8080/api/users/1
+HTTP Method: GET
+
+3. 업데이트 테스트
+Request URL: http://localhost:8080/api/users/1
+HTTP Method: PUT
+Request Body:
+{
+    "firstName": "ram",
+    "lastName":"fadatare",
+    "email": "ram@gmail.com"
+}
+
+4. 삭제 테스트
+Request URL: http://localhost:8080/api/users/1
+HTTP Method: DELETE
