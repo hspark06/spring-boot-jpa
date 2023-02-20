@@ -9,10 +9,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.jpa.enums.MembershipErrorResult;
 import com.jpa.enums.MembershipType;
 import com.jpa.exception.MembershipException;
+import com.jpa.springboot.dto.MembershipResponse;
 import com.jpa.springboot.entity.Membership;
 import com.jpa.springboot.repository.MembershipRepository;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,6 +42,33 @@ public class MembershipServiceTest {
         
         // then
         assertThat(result.getErrorResult()).isEqualTo(MembershipErrorResult.DUPLICATED_MEMBERSHIP_REGISTER);
+    }
+
+    @Test
+    public void 멤버십등록성공() {
+        // given
+        doReturn(null).when(membershipRepository).findByUserIdAndMembershipType(userId, membershipType);
+        doReturn(membership()).when(membershipRepository).save(any(Membership.class));
+    
+        // when
+        final MembershipResponse result = target.addMembership(userId, membershipType, point);
+
+        // then
+        assertThat(result.getId()).isNotNull();
+        assertThat(result.getMembershipType()).isEqualTo(MembershipType.NAVER);
+
+        // verify
+        verify(membershipRepository, times(1)).findByUserIdAndMembershipType(userId, membershipType);
+        verify(membershipRepository, times(1)).save(any(Membership.class));
+    }
+
+    private Membership membership() {
+        return Membership.builder()
+                .id(-1L)
+                .userId(userId)
+                .point(point)
+                .membershipType(MembershipType.NAVER)
+                .build();
     }
 
 }
