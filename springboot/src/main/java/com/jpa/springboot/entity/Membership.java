@@ -6,7 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.jpa.enums.MembershipType;
+import com.jpa.springboot.enums.MembershipType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

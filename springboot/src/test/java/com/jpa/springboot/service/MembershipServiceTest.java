@@ -6,11 +6,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.jpa.enums.MembershipErrorResult;
-import com.jpa.enums.MembershipType;
-import com.jpa.exception.MembershipException;
 import com.jpa.springboot.dto.MembershipResponse;
 import com.jpa.springboot.entity.Membership;
+import com.jpa.springboot.enums.MembershipErrorResult;
+import com.jpa.springboot.enums.MembershipType;
+import com.jpa.springboot.exception.MembershipException;
 import com.jpa.springboot.repository.MembershipRepository;
 
 import static org.mockito.ArgumentMatchers.any;

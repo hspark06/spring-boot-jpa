@@ -1,6 +1,7 @@
-package com.jpa.exception;
+package com.jpa.springboot.exception;
 
-import com.jpa.enums.MembershipErrorResult;
+import com.jpa.springboot.enums.MembershipErrorResult;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

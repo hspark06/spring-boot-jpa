@@ -6,8 +6,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
-import com.jpa.enums.MembershipType;
 import com.jpa.springboot.entity.Membership;
+import com.jpa.springboot.enums.MembershipType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

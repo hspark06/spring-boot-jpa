@@ -1,6 +1,6 @@
 package com.jpa.springboot.dto;
 
-import com.jpa.enums.MembershipType;
+import com.jpa.springboot.enums.MembershipType;
 
 import lombok.Builder;
 import lombok.Getter;

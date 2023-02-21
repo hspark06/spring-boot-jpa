@@ -1,7 +1,9 @@
 package com.jpa.springboot.dto;
 
-import com.jpa.enums.MembershipType;
 import jakarta.validation.constraints.NotNull;
+
+import com.jpa.springboot.enums.MembershipType;
+
 import jakarta.validation.constraints.Min;
 import lombok.Builder;
 import lombok.Getter;

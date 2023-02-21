@@ -1,4 +1,4 @@
-package com.jpa.enums;
+package com.jpa.springboot.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
