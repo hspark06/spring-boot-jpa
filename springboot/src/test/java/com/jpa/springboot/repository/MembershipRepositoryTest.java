@@ -11,6 +11,8 @@ import com.jpa.springboot.enums.MembershipType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestPropertySource("classpath:application-test.properties")
@@ -57,5 +59,60 @@ public class MembershipRepositoryTest {
         assertThat(findResult.getMembershipType()).isEqualTo(MembershipType.NAVER);
         assertThat(findResult.getPoint()).isEqualTo(10000);
     }
+
+    // 조회 테스트
+    @Test
+    public void 멤버십조회_사이즈가0() {
+        // given
+
+        // when
+        List<Membership> result = membershipRepository.findAllByUserId("userId");
+
+        // then
+        assertThat(result.size()).isEqualTo(0);
+    }
+
+    @Test
+    public void 멤버십조회_사이즈가2() {
+        // given
+        final Membership naverMembership = Membership.builder()
+                .userId("userId")
+                .membershipType(MembershipType.NAVER)
+                .point(10000)
+                .build();
+
+        final Membership kakaoMembership = Membership.builder()
+                .userId("userId")
+                .membershipType(MembershipType.KAKAO)
+                .point(10000)
+                .build();
+
+        membershipRepository.save(naverMembership);
+        membershipRepository.save(kakaoMembership);
+
+        // when
+        List<Membership> result = membershipRepository.findAllByUserId("userId");
+
+        // then
+        assertThat(result.size()).isEqualTo(2);
+    }
+    // 삭제 테스트
+    @Test
+    public void 멤버십추가후삭제() {
+        // given
+        final Membership naverMembership = Membership.builder()
+                .userId("userId")
+                .membershipType(MembershipType.NAVER)
+                .point(10000)
+                .build();
+
+        final Membership savedMembership = membershipRepository.save(naverMembership);
+        // when
+        membershipRepository.deleteById(savedMembership.getId());
+
+        // then
+    }
+
+
     
 }

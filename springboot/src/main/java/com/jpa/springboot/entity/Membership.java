@@ -20,6 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table
@@ -38,6 +39,7 @@ public class Membership {
     @Column(nullable = false)
     private String userId;
 
+    @Setter
     @Column(nullable = false)
     @ColumnDefault("0")
     private Integer point;
